@@ -1,25 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Header1 from './components/Navbar/Header1';
+import Header2 from './components/Navbar/Header2';
+import Header3 from './components/Navbar/Header3';
+import { Container, CssBaseline, ThemeProvider } from "@mui/material";
+import { ColorModeContext, useMode } from "./theme";
+import Hero from './components/Hero/Hero';
+import Service from './components/Hero/Service';
+import Main from './components/Main/Main';
+import Footer from './components/Footer/Footer';
+import ScrollTop from './components/Scroll/ScrollTop.jsx';
 function App() {
+  const [theme, colorMode] = useMode();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ColorModeContext.Provider value={colorMode}>  {/* من اجل الدارك مود */}
+      <ThemeProvider theme={theme}>
+      <CssBaseline />
+
+      <Header1 />
+      <Header2 />
+      <Header3 />
+
+      <Hero/>
+      <Main/>
+      {/* <Service/> */}
+      <Footer/>
+      <ScrollTop/>
+      </ThemeProvider>
+
+      </ColorModeContext.Provider>
+
   );
 }
 
 export default App;
+
+
+
